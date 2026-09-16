@@ -101,6 +101,9 @@ h2{font-size:1.9rem;letter-spacing:-.025em;line-height:1.1;font-weight:700}
 .role .when{color:var(--muted);font-size:.9rem;margin-top:2px}
 .role h3{font-size:1.15rem;font-weight:600;margin-bottom:6px}
 .role p{color:var(--muted);max-width:60ch}
+.wins{margin-top:12px;padding-left:18px;max-width:60ch}
+.wins li{margin:5px 0;font-size:.97rem}
+.wins li::marker{color:var(--accent)}
 
 /* skills + edu */
 .two{display:grid;grid-template-columns:1fr 1fr;gap:48px}
@@ -193,7 +196,7 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);f
       <div class="copy">
         <span class="live"><i></i>Live, with paying subscribers</span>
         <h3>PawNotes</h3>
-        <p>An AI assistant for professional pet sitters. Sitters record a quick voice note after each visit; PawNotes turns it into a polished, photo-ready report for the pet owner. I designed, built, and run it end to end — onboarding, usage quotas, billing, and report generation.</p>
+        <p>An AI assistant for professional pet sitters. Sitters record a quick voice note after each visit; PawNotes turns it into a polished, photo-ready report for the pet owner, with Claude Vision checking uploaded photos against what the sitter described. I built it and run it alone: customer discovery, onboarding, support, and production operations.</p>
       </div>
       <div class="stack">
         <dl>
@@ -201,6 +204,7 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);f
           <dt>Backend</dt><dd>FastAPI on Railway, Supabase</dd>
           <dt>AI</dt><dd>Claude API, Whisper</dd>
           <dt>Business</dt><dd>Stripe subscriptions, SendGrid</dd>
+          <dt>Operations</dt><dd>PostHog, Sentry, prompt versioning</dd>
         </dl>
         <a class="btn" href="https://pawnotes.app" target="_blank" rel="noopener">Visit pawnotes.app</a>
       </div>
@@ -209,8 +213,8 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);f
     <div class="projects">
       <article class="proj">
         <h3>Call Center Intelligence</h3>
-        <p>A seven-step LangGraph pipeline that reviews support calls: redacts personal data with Presidio before any model call, classifies and summarizes, and routes risky cases to a person. Covered by 143 tests and deployed to Hugging Face Spaces.</p>
-        <ul class="tags"><li>LangGraph</li><li>Presidio</li><li>pytest</li></ul>
+        <p>Turns call-center audio into transcripts, QA scorecards, and compliance reports. A seven-node LangGraph pipeline checks for prompt injection and redacts personal data before any model call, scores calls with a deterministic engine that overrides raw model scores, and sends results to a supervisor for review. 143 tests; runs on Hugging Face Spaces.</p>
+        <ul class="tags"><li>LangGraph</li><li>Presidio</li><li>Pydantic</li><li>faster-whisper</li></ul>
       </article>
       <article class="proj">
         <h3>SnackStack</h3>
@@ -245,24 +249,48 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);f
   <div class="wrap">
     <div class="sec-head">
       <h2>Experience</h2>
-      <p>Six-plus years of production engineering, most recently on one of the largest marketplaces on the web.</p>
+      <p>Six-plus years of production engineering across e-commerce, healthcare, and one of the largest marketplaces on the web.</p>
     </div>
     <ol class="roles">
       <li class="role">
-        <div><div class="org">eBay</div><div class="when">Current · San Jose, CA</div></div>
-        <div><h3>Senior Frontend Engineer</h3><p>Builds the seller listing platform — the flows sellers use to create and manage listings — with Marko.js and Express. Works across the UI and the Node services behind it.</p></div>
+        <div><div class="org">eBay</div><div class="when">Aug 2024 – present<br>San Jose, CA</div></div>
+        <div><h3>Senior Frontend Engineer</h3>
+          <p>Owns frontend surfaces on the seller listing platform in Marko.js and Node/Express, serving sellers on web and mobile web.</p>
+          <ul class="wins">
+            <li>Led the Photo Tips feature end to end, improving listing conversion by 15%.</li>
+            <li>Built a Web Worker HEIC decoding pipeline that cut high-resolution image render time by 40%.</li>
+            <li>Batched and restructured API calls, lowering round-trip latency by 30% at peak traffic.</li>
+            <li>Core Web Vitals work reduced LCP by 28%, with components built to WCAG 2.1.</li>
+          </ul></div>
       </li>
       <li class="role">
-        <div><div class="org">Change Healthcare</div><div class="when">Healthcare technology</div></div>
-        <div><h3>React engineering</h3><p>Built React applications for healthcare technology products.</p></div>
+        <div><div class="org">Change Healthcare</div><div class="when">Jul 2023 – Jul 2024<br>Nashville, TN</div></div>
+        <div><h3>Software Engineer</h3>
+          <p>Built real-time analytics dashboards for operational healthcare users in React, REST, and WebSocket.</p>
+          <ul class="wins">
+            <li>Improved dashboard data refresh latency by 25%.</li>
+            <li>Implemented OAuth2 flows for HIPAA-compliant access across distributed services.</li>
+            <li>Reduced the initial bundle by 35% with Webpack 5 code splitting.</li>
+          </ul></div>
       </li>
       <li class="role">
-        <div><div class="org">Cognizant</div><div class="when">Consulting</div></div>
-        <div><h3>Software engineering</h3><p>Delivered web applications for enterprise clients.</p></div>
+        <div><div class="org">Cognizant</div><div class="when">Nov 2020 – Nov 2021<br>Pune, India</div></div>
+        <div><h3>Software Engineer</h3>
+          <p>Migrated legacy jQuery healthcare portals to React and Redux, running both stacks side by side during the move.</p>
+          <ul class="wins">
+            <li>User engagement rose 40% after the migration.</li>
+            <li>Built real-time patient scheduling with optimistic UI, cutting perceived latency by 27%.</li>
+            <li>Automated regression coverage with Playwright, reducing manual QA by 40%.</li>
+          </ul></div>
       </li>
       <li class="role">
-        <div><div class="org">Attra Infotech</div><div class="when">Financial technology</div></div>
-        <div><h3>Software engineering</h3><p>Built web software for financial services.</p></div>
+        <div><div class="org">Attra Infotech</div><div class="when">Mar 2017 – Nov 2020<br>Bangalore, India</div></div>
+        <div><h3>Software Engineer</h3>
+          <p>Built the storefront for a full e-commerce platform in React: listing, filtering, cart, and checkout.</p>
+          <ul class="wins">
+            <li>Contributed to a 35% increase in conversion.</li>
+            <li>Kept catalog search under 200ms with debouncing, request cancellation, and caching.</li>
+          </ul></div>
       </li>
     </ol>
   </div>
@@ -276,15 +304,15 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);f
     </div>
     <div class="two">
       <div>
-        <div class="skill-group"><h3>Agent systems</h3><p>LangGraph, LangChain, Claude API, tool use and MCP, RAG with ChromaDB, evaluation, human-in-the-loop design, PII redaction</p></div>
-        <div class="skill-group"><h3>Backend</h3><p>Python, FastAPI, Node.js, Express, Supabase and Postgres, Stripe</p></div>
-        <div class="skill-group"><h3>Frontend</h3><p>React, Marko.js, React Native, TypeScript, JavaScript</p></div>
-        <div class="skill-group"><h3>Shipping</h3><p>Vercel, Railway, Hugging Face Spaces, pytest, Git</p></div>
+        <div class="skill-group"><h3>Agent systems</h3><p>LangGraph, multi-agent orchestration, tool calling, MCP, human-in-the-loop control, RAG with ChromaDB and pgvector, Claude and OpenAI APIs</p></div>
+        <div class="skill-group"><h3>Evaluation and safety</h3><p>LangSmith, Langfuse, Pydantic contracts, retrieval evaluation, prompt-injection detection, Presidio PII redaction, guardrails</p></div>
+        <div class="skill-group"><h3>Backend and cloud</h3><p>Python, FastAPI, Node.js, Express, Supabase, AWS (S3, SQS), Docker, GitHub Actions</p></div>
+        <div class="skill-group"><h3>Frontend</h3><p>TypeScript, React, Next.js, Marko.js, React Native, Web Workers, Core Web Vitals, WCAG 2.1</p></div>
       </div>
       <div>
         <ul class="edu">
-          <li><b>M.S. in Computer Science</b><span>University of Alabama at Birmingham · 4.0 GPA</span></li>
-          <li><b>B.Tech in Electrical Engineering</b><span>KSRM College of Engineering, Kadapa</span></li>
+          <li><b>M.S. in Computer Science</b><span>University of Alabama at Birmingham · 4.0 GPA · 2023</span></li>
+          <li><b>B.Tech in Electrical Engineering</b><span>KSRM College of Engineering, Kadapa · 2016</span></li>
         </ul>
         <div class="now">
           <h3>What I'm looking for</h3>
@@ -301,6 +329,7 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);f
     <p>I'm glad to hear about roles, collaborations, or a hard problem you're stuck on.</p>
     <div class="cta">
       <button type="button" class="btn primary email-btn">kumarbharath4811@gmail.com</button>
+      <a class="btn ghost" href="https://www.linkedin.com/in/bharathkumarvaddineni" target="_blank" rel="noopener">LinkedIn</a>
       <a class="btn ghost" href="https://github.com/agentbharath" target="_blank" rel="noopener">GitHub</a>
     </div>
   </div>
