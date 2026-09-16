@@ -30,11 +30,12 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
 
 /* nav */
-nav{display:flex;justify-content:space-between;align-items:center;padding:26px 0}
+.site-nav{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 92%,transparent);border-bottom:1px solid var(--line);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;padding-top:18px;padding-bottom:18px}
 .mark{font-weight:800;text-decoration:none;letter-spacing:-.02em;font-size:1.05rem}
-nav ul{list-style:none;display:flex;gap:26px}
-nav ul a{text-decoration:none;color:var(--muted);font-size:.95rem;font-weight:500}
-nav ul a:hover{color:var(--ink)}
+.site-nav ul{list-style:none;display:flex;gap:26px}
+.site-nav ul a{text-decoration:none;color:var(--muted);font-size:.95rem;font-weight:500}
+.site-nav ul a:hover{color:var(--ink)}
 
 /* hero */
 .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding:64px 0 96px}
@@ -134,11 +135,11 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);f
   .projects{grid-template-columns:1fr}
   .proj,.proj:nth-child(even){padding:24px 0;border-left:0}
   .two{grid-template-columns:1fr}
-  nav ul{gap:16px}
+  .site-nav ul{gap:16px}
 }
 @media (max-width:560px){
   .wrap{padding:0 20px}
-  nav ul li:not(:last-child){display:none}
+  .site-nav ul li:not(:last-child){display:none}
   .feature .copy,.feature .stack{padding:30px}
   section{padding:64px 0}
 }
@@ -151,17 +152,19 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);f
 </style>
 </head>
 <body>
-<div class="wrap">
-  <nav aria-label="Primary">
-    <a class="mark" href="#top">Bharath Vaddineni</a>
+<nav class="site-nav" aria-label="Primary">
+  <div class="wrap nav-inner">
+    <a class="mark" href="#top">Bharath Kumar Vaddineni</a>
     <ul>
       <li><a href="#work">Work</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-  </nav>
+  </div>
+</nav>
 
+<div class="wrap">
   <header class="hero" id="top">
     <div>
       <h1>Agents that hold up in production.</h1>
