@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bharath Kumar Vaddineni — Agentic AI & Frontend Engineer</title>
+<meta name="description" content="Bharath Kumar Vaddineni builds production agent systems and the interfaces people use to trust them. Senior Frontend Engineer at eBay; builder of PawNotes.">
+<meta property="og:title" content="Bharath Kumar Vaddineni">
+<meta property="og:description" content="Agent systems that hold up in production, and the interfaces people use to trust them.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232446C8'/><text x='16' y='22' font-family='Arial' font-weight='700' font-size='16' fill='white' text-anchor='middle'>BK</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F1F3F0; --surface:#FFFFFF; --ink:#18211D; --muted:#5B6862; --line:#D6DCD8;
+  --accent:#2446C8; --accent-soft:#E3E8FB; --amber:#C98A10; --amber-soft:#FBF0D6; --ok:#1F8A5B;
+  --sans:"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#121714;--surface:#1A201D;--ink:#E7ECE9;--muted:#98A59F;--line:#2C3531;
+    --accent:#7C95FF;--accent-soft:#1E2748;--amber:#E6B04A;--amber-soft:#3A2F14;--ok:#4CC08A;}
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+
+/* nav */
+nav{display:flex;justify-content:space-between;align-items:center;padding:26px 0}
+.mark{font-weight:800;text-decoration:none;letter-spacing:-.02em;font-size:1.05rem}
+nav ul{list-style:none;display:flex;gap:26px}
+nav ul a{text-decoration:none;color:var(--muted);font-size:.95rem;font-weight:500}
+nav ul a:hover{color:var(--ink)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding:64px 0 96px}
+h1{font-size:clamp(2.6rem,5.6vw,4.4rem);line-height:1.02;letter-spacing:-.035em;font-weight:800;max-width:13ch}
+.lede{margin-top:26px;font-size:1.2rem;color:var(--muted);max-width:46ch}
+.lede strong{color:var(--ink);font-weight:600}
+.cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 22px;border-radius:999px;font-weight:600;text-decoration:none;font-size:.98rem}
+button.btn{font-family:inherit;cursor:pointer;background:none;color:inherit}
+.btn.primary{background:var(--ink);color:var(--bg)}
+.btn.ghost{border:1.5px solid var(--line)}
+.btn.ghost:hover{border-color:var(--ink)}
+
+/* trace */
+.trace{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px 22px 18px;font-family:var(--mono);font-size:.82rem}
+.trace-head{display:flex;justify-content:space-between;color:var(--muted);padding-bottom:14px;border-bottom:1px dashed var(--line);margin-bottom:10px}
+.step{display:grid;grid-template-columns:22px 1fr auto;gap:12px;align-items:start;padding:10px 0;position:relative;opacity:.28;transition:opacity .4s ease}
+.step.on{opacity:1}
+.step::before{content:"";position:absolute;left:10px;top:30px;bottom:-10px;width:2px;background:var(--line)}
+.step:last-of-type::before{display:none}
+.dot{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);background:var(--surface);position:relative;z-index:1}
+.step.on .dot{border-color:var(--accent);background:var(--accent-soft)}
+.step.hitl.on .dot{border-color:var(--amber);background:var(--amber-soft)}
+.step.done.on .dot{border-color:var(--ok);background:var(--ok)}
+.step b{font-weight:500;color:var(--ink);display:block}
+.step span{color:var(--muted);font-size:.76rem}
+.step .t{color:var(--muted);font-size:.74rem;white-space:nowrap}
+.step.hitl.on b{color:var(--amber)}
+.caption{margin-top:12px;font-family:var(--sans);font-size:.85rem;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.step{opacity:1;transition:none}}
+
+/* sections */
+section{scroll-margin-top:16px;padding:88px 0;border-top:1px solid var(--line)}
+.sec-head{display:grid;grid-template-columns:260px 1fr;gap:40px;margin-bottom:44px}
+h2{font-size:1.9rem;letter-spacing:-.025em;line-height:1.1;font-weight:700}
+.sec-head p{color:var(--muted);max-width:56ch;padding-top:6px}
+
+/* featured project */
+.feature{display:grid;grid-template-columns:1.2fr 1fr;gap:0;border-radius:22px;overflow:hidden;background:var(--ink);color:var(--bg);margin-bottom:28px}
+.feature .copy{padding:44px}
+.live{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;font-weight:600;background:rgba(255,255,255,.1);padding:6px 12px;border-radius:999px}
+.live i{width:8px;height:8px;border-radius:50%;background:#4CC08A;box-shadow:0 0 0 4px rgba(76,192,138,.25)}
+.feature h3{font-size:2.2rem;letter-spacing:-.03em;margin:18px 0 12px}
+.feature p{opacity:.78;max-width:44ch}
+.feature .stack{padding:44px;border-left:1px solid rgba(255,255,255,.12);display:flex;flex-direction:column;justify-content:space-between;gap:28px}
+.feature dl{display:grid;grid-template-columns:auto 1fr;gap:10px 22px;font-size:.93rem}
+.feature dt{opacity:.55}
+.feature a.btn{background:var(--bg);color:var(--ink);align-self:flex-start}
+
+/* project list */
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--line)}
+.proj{padding:28px 28px 30px 0;border-bottom:1px solid var(--line)}
+.proj:nth-child(even){padding-left:28px;padding-right:0;border-left:1px solid var(--line)}
+.proj h3{font-size:1.25rem;letter-spacing:-.015em;margin-bottom:8px}
+.proj p{color:var(--muted);font-size:.98rem;max-width:48ch}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.tags li{list-style:none;font-size:.78rem;padding:3px 10px;border-radius:6px;background:var(--accent-soft);color:var(--accent);font-weight:500}
+
+/* experience */
+.roles{list-style:none}
+.role{display:grid;grid-template-columns:260px 1fr;gap:40px;padding:26px 0;border-bottom:1px solid var(--line)}
+.role:first-child{padding-top:0}
+.role .org{font-weight:700;font-size:1.15rem}
+.role .when{color:var(--muted);font-size:.9rem;margin-top:2px}
+.role h3{font-size:1.15rem;font-weight:600;margin-bottom:6px}
+.role p{color:var(--muted);max-width:60ch}
+
+/* skills + edu */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.skill-group{margin-bottom:26px}
+.skill-group h3{font-size:1rem;margin-bottom:10px}
+.skill-group p{color:var(--muted)}
+.edu{list-style:none}
+.edu li{padding:18px 0;border-bottom:1px solid var(--line)}
+.edu li:first-child{padding-top:0}
+.edu b{display:block;font-size:1.08rem}
+.edu span{color:var(--muted)}
+.now{margin-top:34px;padding:24px;border-radius:14px;background:var(--amber-soft);}
+.now h3{font-size:1rem;margin-bottom:6px}
+.now p{font-size:.97rem}
+
+/* contact */
+.contact{padding:110px 0 70px}
+.contact h2{font-size:clamp(2.2rem,5vw,3.6rem);letter-spacing:-.035em;max-width:16ch;line-height:1.05}
+.contact p{color:var(--muted);margin-top:18px;max-width:50ch;font-size:1.1rem}
+.contact .cta{margin-top:30px}
+footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);font-size:.88rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;gap:44px;padding:36px 0 72px}
+  .sec-head,.role{grid-template-columns:1fr;gap:10px}
+  .feature{grid-template-columns:1fr}
+  .feature .stack{border-left:0;border-top:1px solid rgba(255,255,255,.12)}
+  .projects{grid-template-columns:1fr}
+  .proj,.proj:nth-child(even){padding:24px 0;border-left:0}
+  .two{grid-template-columns:1fr}
+  nav ul{gap:16px}
+}
+@media (max-width:560px){
+  .wrap{padding:0 20px}
+  nav ul li:not(:last-child){display:none}
+  .feature .copy,.feature .stack{padding:30px}
+  section{padding:64px 0}
+}
+/* email panel */
+.email-panel{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:50;background:var(--ink);color:var(--bg);border-radius:14px;padding:16px 18px;display:none;gap:14px;align-items:center;flex-wrap:wrap;max-width:calc(100% - 32px);box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.email-panel.open{display:flex}
+.email-panel p{font-size:.95rem;margin-right:6px}
+.email-panel a,.email-panel button{font:inherit;font-size:.9rem;font-weight:600;color:var(--ink);background:var(--bg);border:0;border-radius:999px;padding:8px 14px;text-decoration:none;cursor:pointer}
+.email-panel .close{background:transparent;color:var(--bg);padding:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav aria-label="Primary">
+    <a class="mark" href="#top">Bharath Vaddineni</a>
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero" id="top">
+    <div>
+      <h1>Agents that hold up in production.</h1>
+      <p class="lede">I'm <strong>Bharath Kumar Vaddineni</strong>, a senior engineer in the Bay Area. Six years shipping frontend at scale, now building LLM agent systems — the pipelines, the guardrails, and the interfaces people use to trust them.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://github.com/orgs/agentbharath/repositories" target="_blank" rel="noopener">See what I've built</a>
+        <button type="button" class="btn ghost email-btn">Email me</button>
+      </div>
+    </div>
+
+    <div class="trace" aria-label="Example agent run: a call transcript moving through a review pipeline">
+      <div class="trace-head"><span>run · call_review</span><span id="status">running</span></div>
+      <div class="step"><div class="dot"></div><div><b>ingest</b><span>transcript received, 14 turns</span></div><div class="t">0.2s</div></div>
+      <div class="step"><div class="dot"></div><div><b>redact_pii</b><span>Presidio · 3 entities masked</span></div><div class="t">0.4s</div></div>
+      <div class="step"><div class="dot"></div><div><b>classify_intent</b><span>billing dispute · 0.91</span></div><div class="t">1.1s</div></div>
+      <div class="step"><div class="dot"></div><div><b>retrieve_policy</b><span>4 chunks from knowledge base</span></div><div class="t">0.6s</div></div>
+      <div class="step hitl"><div class="dot"></div><div><b>human_review</b><span>refund over threshold, paused for approval</span></div><div class="t">approved</div></div>
+      <div class="step done"><div class="dot"></div><div><b>summarize</b><span>report written, audit trail saved</span></div><div class="t">1.8s</div></div>
+      <p class="caption">The shape of most things I build: typed steps, redaction before the model sees anything, and a person in the loop where it matters.</p>
+    </div>
+  </header>
+</div>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Work</h2>
+      <p>One product with paying customers, and a set of systems built to learn the hard parts of agent engineering: orchestration, retrieval, evaluation, and human review.</p>
+    </div>
+
+    <article class="feature">
+      <div class="copy">
+        <span class="live"><i></i>Live, with paying subscribers</span>
+        <h3>PawNotes</h3>
+        <p>An AI assistant for professional pet sitters. Sitters record a quick voice note after each visit; PawNotes turns it into a polished, photo-ready report for the pet owner. I designed, built, and run it end to end — onboarding, usage quotas, billing, and report generation.</p>
+      </div>
+      <div class="stack">
+        <dl>
+          <dt>Frontend</dt><dd>React, Vite, Vercel</dd>
+          <dt>Backend</dt><dd>FastAPI on Railway, Supabase</dd>
+          <dt>AI</dt><dd>Claude API, Whisper</dd>
+          <dt>Business</dt><dd>Stripe subscriptions, SendGrid</dd>
+        </dl>
+        <a class="btn" href="https://pawnotes.app" target="_blank" rel="noopener">Visit pawnotes.app</a>
+      </div>
+    </article>
+
+    <div class="projects">
+      <article class="proj">
+        <h3>Call Center Intelligence</h3>
+        <p>A seven-step LangGraph pipeline that reviews support calls: redacts personal data with Presidio before any model call, classifies and summarizes, and routes risky cases to a person. Covered by 143 tests and deployed to Hugging Face Spaces.</p>
+        <ul class="tags"><li>LangGraph</li><li>Presidio</li><li>pytest</li></ul>
+      </article>
+      <article class="proj">
+        <h3>SnackStack</h3>
+        <p>Multi-agent food ordering with voice input and output. Coordinated agents handle the order, with a human confirmation step before anything is placed.</p>
+        <ul class="tags"><li>Multi-agent</li><li>Human-in-the-loop</li><li>Voice</li></ul>
+      </article>
+      <article class="proj">
+        <h3>PromptAutopsy</h3>
+        <p>Paste a prompt that isn't working and get a diagnosis. Retrieval-backed analysis explains what is likely going wrong and how to fix it.</p>
+        <ul class="tags"><li>RAG</li><li>ChromaDB</li><li>LangChain</li></ul>
+      </article>
+      <article class="proj">
+        <h3>GitHub Scanner</h3>
+        <p>An agentic RAG tool that reads a repository and scores its overall health, with an explanation behind each score.</p>
+        <ul class="tags"><li>Agentic RAG</li><li>Python</li></ul>
+      </article>
+      <article class="proj">
+        <h3>Vicin</h3>
+        <p>A hyperlocal neighborhood app for iOS and Android. Location-aware feeds built on geospatial queries in PostGIS.</p>
+        <ul class="tags"><li>React Native</li><li>Supabase</li><li>PostGIS</li></ul>
+      </article>
+      <article class="proj">
+        <h3>Research in progress</h3>
+        <p>Writing an experience report on testing and human-in-the-loop patterns for production LangGraph pipelines, drawn from the systems above.</p>
+        <ul class="tags"><li>Applied AI</li><li>Evaluation</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Experience</h2>
+      <p>Six-plus years of production engineering, most recently on one of the largest marketplaces on the web.</p>
+    </div>
+    <ol class="roles">
+      <li class="role">
+        <div><div class="org">eBay</div><div class="when">Current · San Jose, CA</div></div>
+        <div><h3>Senior Frontend Engineer</h3><p>Builds the seller listing platform — the flows sellers use to create and manage listings — with Marko.js and Express. Works across the UI and the Node services behind it.</p></div>
+      </li>
+      <li class="role">
+        <div><div class="org">Change Healthcare</div><div class="when">Healthcare technology</div></div>
+        <div><h3>React engineering</h3><p>Built React applications for healthcare technology products.</p></div>
+      </li>
+      <li class="role">
+        <div><div class="org">Cognizant</div><div class="when">Consulting</div></div>
+        <div><h3>Software engineering</h3><p>Delivered web applications for enterprise clients.</p></div>
+      </li>
+      <li class="role">
+        <div><div class="org">Attra Infotech</div><div class="when">Financial technology</div></div>
+        <div><h3>Software engineering</h3><p>Built web software for financial services.</p></div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>About</h2>
+      <p>Frontend taught me that software is only as good as what people can see and trust. That's the lens I bring to agents.</p>
+    </div>
+    <div class="two">
+      <div>
+        <div class="skill-group"><h3>Agent systems</h3><p>LangGraph, LangChain, Claude API, tool use and MCP, RAG with ChromaDB, evaluation, human-in-the-loop design, PII redaction</p></div>
+        <div class="skill-group"><h3>Backend</h3><p>Python, FastAPI, Node.js, Express, Supabase and Postgres, Stripe</p></div>
+        <div class="skill-group"><h3>Frontend</h3><p>React, Marko.js, React Native, TypeScript, JavaScript</p></div>
+        <div class="skill-group"><h3>Shipping</h3><p>Vercel, Railway, Hugging Face Spaces, pytest, Git</p></div>
+      </div>
+      <div>
+        <ul class="edu">
+          <li><b>M.S. in Computer Science</b><span>University of Alabama at Birmingham · 4.0 GPA</span></li>
+          <li><b>B.Tech in Electrical Engineering</b><span>KSRM College of Engineering, Kadapa</span></li>
+        </ul>
+        <div class="now">
+          <h3>What I'm looking for</h3>
+          <p>Forward deployed and agentic AI engineering roles — working directly with customers to take agents from prototype to production.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="contact" id="contact">
+    <h2>Building something with agents? Let's talk.</h2>
+    <p>I'm glad to hear about roles, collaborations, or a hard problem you're stuck on.</p>
+    <div class="cta">
+      <button type="button" class="btn primary email-btn">kumarbharath4811@gmail.com</button>
+      <a class="btn ghost" href="https://github.com/agentbharath" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+  <footer>
+    <span>© 2026 Bharath Kumar Vaddineni</span>
+    <span>Sunnyvale, California</span>
+  </footer>
+</div>
+
+<div class="email-panel" role="dialog" aria-label="Contact by email" aria-live="polite">
+  <p id="email-msg">kumarbharath4811@gmail.com</p>
+  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=kumarbharath4811@gmail.com" target="_blank" rel="noopener">Open in Gmail</a>
+  <a href="mailto:kumarbharath4811@gmail.com">Open mail app</a>
+  <button type="button" class="copy">Copy</button>
+  <button type="button" class="close" aria-label="Close">✕</button>
+</div>
+<script>
+(function(){
+  var EMAIL='kumarbharath4811@gmail.com';
+  var panel=document.querySelector('.email-panel'), msg=document.getElementById('email-msg');
+  function copy(){
+    function done(){msg.textContent='Copied: '+EMAIL}
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(EMAIL).then(done,fallback);
+    } else fallback();
+    function fallback(){
+      var t=document.createElement('textarea');t.value=EMAIL;document.body.appendChild(t);t.select();
+      try{document.execCommand('copy');done()}catch(e){msg.textContent=EMAIL}
+      t.remove();
+    }
+  }
+  document.querySelectorAll('.email-btn').forEach(function(b){
+    b.addEventListener('click',function(){panel.classList.add('open');copy()});
+  });
+  panel.querySelector('.copy').addEventListener('click',copy);
+  panel.querySelector('.close').addEventListener('click',function(){panel.classList.remove('open')});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')panel.classList.remove('open')});
+})();
+// In-page links scroll directly, so they work even when the page is embedded or previewed
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var el=document.getElementById(a.getAttribute('href').slice(1));
+    if(!el) return;
+    e.preventDefault();
+    var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    el.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+    if(history.replaceState){try{history.replaceState(null,'','#'+el.id)}catch(_){}}
+  });
+});
+(function(){
+  var steps=[].slice.call(document.querySelectorAll('.step'));
+  var status=document.getElementById('status');
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    steps.forEach(function(s){s.classList.add('on')});status.textContent='completed';return;
+  }
+  var i=0;
+  function next(){
+    if(i<steps.length){
+      steps[i].classList.add('on');
+      if(steps[i].classList.contains('hitl')) status.textContent='awaiting review';
+      else status.textContent='running';
+      var wait=steps[i].classList.contains('hitl')?1400:520;
+      i++;setTimeout(next,wait);
+    } else { status.textContent='completed'; }
+  }
+  setTimeout(next,400);
+})();
+</script>
+</body>
+</html>
